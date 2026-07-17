@@ -68,12 +68,21 @@ class GameAgent:
                 response_format={"type": "json_object"},
             )
             content = resp.choices[0].message.content
-            match = re.search(r'\{.*\}', content, re.DOTALL)
-            if match:
-                return json.loads(match.group())
+            return self._parse_json(content)
+        except Exception as e:
+            from astrbot.api import logger
+            logger.error(f"[SkyWithYourLover] decide 失败: {e}")
+            return None
+
+    def _parse_json(self, content: str) -> dict:
+        try:
             return json.loads(content)
         except Exception:
-            return None
+            pass
+        match = re.search(r'\{.*\}', content, re.DOTALL)
+        if match:
+            return json.loads(match.group())
+        return json.loads('{' + content.strip().rstrip(',') + '}')
 
     async def look(self, screenshot_b64: str) -> str:
         """纯粹描述当前游戏场景"""
