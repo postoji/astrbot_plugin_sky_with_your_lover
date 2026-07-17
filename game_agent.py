@@ -33,7 +33,10 @@ actions 可以为空数组。send_chat 会在游戏内发送消息，message 是
 class GameAgent:
     def __init__(self, base_url: str, api_key: str, model: str,
                  lover_name: str, lover_personality: str):
-        self.client = AsyncOpenAI(base_url=base_url, api_key=api_key)
+        self.client = AsyncOpenAI(
+            base_url=base_url or "https://api.openai.com/v1",
+            api_key=api_key or "placeholder",
+        )
         self.model = model
         self.system_prompt = SYSTEM_PROMPT.format(
             name=lover_name,
