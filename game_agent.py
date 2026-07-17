@@ -1,4 +1,5 @@
 import json
+import re
 from openai import AsyncOpenAI
 
 SYSTEM_PROMPT = """你是{name}，正在和你的恋人一起玩《光遇 Sky: Children of the Light》。
@@ -66,7 +67,11 @@ class GameAgent:
                 max_tokens=1024,
                 response_format={"type": "json_object"},
             )
-            return json.loads(resp.choices[0].message.content)
+            content = resp.choices[0].message.content
+            match = re.search(r'\{.*\}', content, re.DOTALL)
+            if match:
+                return json.loads(match.group())
+            return json.loads(content)
         except Exception:
             return None
 
