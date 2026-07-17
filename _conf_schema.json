@@ -1,48 +1,48 @@
 {
   "sky_server_url": {
-    "type": "str",
+    "type": "string",
     "description": "sky-mcp-server 地址",
     "default": "http://127.0.0.1:9800",
     "hint": "frp穿透后填服务器本机地址，例如 http://127.0.0.1:9800"
   },
   "sky_server_token": {
-    "type": "str",
+    "type": "string",
     "description": "sky-mcp-server 的 Bearer Token",
     "default": "",
     "hint": "运行 start-http.bat 时显示的 Token"
   },
   "ai_base_url": {
-    "type": "str",
+    "type": "string",
     "description": "AI 中转站 API 地址",
     "default": "",
     "hint": "例如 https://xxx.com/v1"
   },
   "ai_api_key": {
-    "type": "str",
+    "type": "string",
     "description": "AI API 密钥",
     "default": "",
     "hint": "你的中转站 API Key"
   },
   "ai_model": {
-    "type": "str",
+    "type": "string",
     "description": "AI 模型名称（需支持视觉）",
     "default": "gemini-2.5-pro",
     "hint": "必须是支持图片输入的模型"
   },
   "lover_name": {
-    "type": "str",
+    "type": "string",
     "description": "AI 恋人的名字",
     "default": "小雨",
     "hint": "她/他在游戏里叫什么"
   },
   "lover_personality": {
-    "type": "str",
+    "type": "string",
     "description": "AI 恋人的性格描述",
     "default": "温柔体贴，喜欢探索，对光遇世界充满好奇，喜欢牵着你的手一起飞翔",
     "hint": "影响游戏中的行为和说话风格"
   },
   "master_id": {
-    "type": "str",
+    "type": "string",
     "description": "主人的 QQ 号",
     "default": "",
     "hint": "只响应这个 QQ 号的游戏指令，留空不限制"
